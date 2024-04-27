@@ -35,7 +35,7 @@
         android:text="Go to Games"
         android:textColor="@color/white"
         android:textSize="45sp"
-        app:cornerRadius="15dp"
+        app:cornerRadius="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"

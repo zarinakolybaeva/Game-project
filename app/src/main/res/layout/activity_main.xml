@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/dark_grey"
-        app:itemIconSize="30dp"
+        app:itemIconSize="29dp"
         app:itemIconTint="@color/teal_blue"
         app:itemTextColor="@color/teal_blue"
         app:layout_constraintBottom_toBottomOf="parent"
