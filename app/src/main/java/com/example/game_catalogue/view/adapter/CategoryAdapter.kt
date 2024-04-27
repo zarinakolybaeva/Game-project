@@ -11,7 +11,7 @@ import com.example.game_catalogue.databinding.CategoryItemBinding
 import com.example.game_catalogue.view.fragment.GameListFragment
 
 class CategoryAdapter(): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
-    private val categories = listOf("MMO", "MMORPG", "Shooter", "Social", "MOBA", "Fighting", "Strategy")
+    private val categories = listOf("MMO", "MMORPG", "Shooter", "Social", "MOBA", "Fight", "Strategy")
 
     inner class CategoryViewHolder(
         private val binding: CategoryItemBinding,
