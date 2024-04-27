@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface ApiService {
-    @GET("games/")
+    @GET("game/")
     fun getAllGames(): Call<List<Game>>
 
     @GET("games/")

@@ -9,7 +9,7 @@ object ApiClient {
     private const val BASE_URL = "https://www.freetogame.com/api/"
     var apiService: ApiService? = null
 
-    @JvmName("getApiService1")
+    @JvmName("getApiService")
     fun getApiService(): ApiService? {
         if (apiService == null) {
             val loggingInterceptor = HttpLoggingInterceptor()

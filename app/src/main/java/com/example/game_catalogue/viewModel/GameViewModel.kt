@@ -6,7 +6,7 @@ import com.example.game_catalogue.data.source.remote.GameRemoteRepository
 class GameViewModel(
     private val gameRepository: GameRemoteRepository,
 ): ViewModel() {
-    fun getAllGames() = gameRepository.getAllGames()
+    fun getAllGame() = gameRepository.getAllGames()
 
     fun getGamesByCategory(category: String) = gameRepository.getGamesByCategoryName(category)
 
