@@ -15,7 +15,7 @@ import android.net.Uri
 
 class GameListFragment : Fragment() {
     private lateinit var binding: FragmentGameListBinding
-    private lateinit var gameViewModel: GameViewMode
+    private lateinit var gameViewModel: GameViewModel
     private lateinit var rvGamesAdapter: GameAdapter
 
     override fun onCreateView(
