@@ -13,7 +13,7 @@ import com.example.game_catalogue.viewModel.GameViewModel
 class GameAdapter(
     private val gameViewModel: GameViewModel,
     private val onGameItemClicked: (position: Int, games: List<Game>) -> Unit
-): RecyclerView.Adapter<GameAdapt.GameViewHolder>() {
+): RecyclerView.Adapter<GameAdapter.GameViewHolder>() {
     var games: List<Game> = emptyList()
 
     class GameViewHolder(

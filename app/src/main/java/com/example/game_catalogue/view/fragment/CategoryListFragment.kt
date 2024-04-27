@@ -13,7 +13,7 @@ class CategoryListFragment : Fragment(R.layout.fragment_category_list) {
     private lateinit var binding: FragmentCategoryListBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?,
+        savedInstanceState: Bundl?,
     ): View {
         binding = FragmentCategoryListBinding.inflate(inflater, container, false)
         return binding.root
