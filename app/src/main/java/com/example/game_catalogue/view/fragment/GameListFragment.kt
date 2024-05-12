@@ -26,6 +26,7 @@ class GameListFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         gameViewModel = GameViewModel(
@@ -33,19 +34,29 @@ class GameListFragment : Fragment() {
         )
 
         when (requireArguments().getInt(ARG_MODE)) {
-            0 -> gameViewModel.getAllGames().observe(viewLifecycleOwner) { games ->
-                if (games != null) {
+            0 -> {
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
                     rvGamesAdapter.games = games
                     rvGamesAdapter.notifyDataSetChanged()
                 }
+                gameViewModel.getAllGames()
             }
-            1 -> gameViewModel.getGamesByCategory(requireArguments().getString(ARG_CATEGORY)!!)
-                .observe(viewLifecycleOwner) { games ->
-                    if (games != null) {
-                        rvGamesAdapter.games = games
-                        rvGamesAdapter.notifyDataSetChanged()
-                    }
+            1 -> {
+                val category = requireArguments().getString(ARG_CATEGORY)!!
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
+                    rvGamesAdapter.games = games
+                    rvGamesAdapter.notifyDataSetChanged()
                 }
+                gameViewModel.getGamesByCategory(category)
+            }
+            2 -> {
+                val platform = requireArguments().getString(ARG_PLATFORM)!!
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
+                    rvGamesAdapter.games = games
+                    rvGamesAdapter.notifyDataSetChanged()
+                }
+                gameViewModel.getGamesByPlatform(platform)
+            }
         }
 
         rvGamesAdapter = GameAdapter(gameViewModel) { position, games ->
@@ -60,9 +71,9 @@ class GameListFragment : Fragment() {
         }
     }
 
-
     companion object {
         const val ARG_MODE = "ARG_MODE"
         const val ARG_CATEGORY = "ARG_CATEGORY"
+        const val ARG_PLATFORM = "ARG_PLATFORM"
     }
 }

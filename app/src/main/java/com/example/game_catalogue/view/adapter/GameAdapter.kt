@@ -52,6 +52,9 @@ class GameAdapter(
     override fun onBindViewHolder(holder: GameViewHolder, position: Int) {
         val game = games[position]
         holder.bind(game)
+        holder.itemView.setOnClickListener {
+            onGameItemClicked(position, games)
+        }
     }
 
     override fun getItemCount() = games.size

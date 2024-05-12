@@ -13,7 +13,7 @@ import com.example.game_catalogue.view.fragment.GameListFragment
 class CategoryAdapter(): RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>() {
     private val categories = listOf("MMO", "MMORPG", "Shooter", "Social", "MOBA", "Fighting", "Strategy")
 
-    inner class CategoryViewHolder(
+    class CategoryViewHolder(
         private val binding: CategoryItemBinding,
         val navController: NavController):
         RecyclerView.ViewHolder(binding.root){
