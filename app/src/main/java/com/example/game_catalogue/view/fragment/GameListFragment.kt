@@ -49,14 +49,6 @@ class GameListFragment : Fragment() {
                 }
                 gameViewModel.getGamesByCategory(category)
             }
-            2 -> {
-                val platform = requireArguments().getString(ARG_PLATFORM)!!
-                gameViewModel.games.observe(viewLifecycleOwner) { games ->
-                    rvGamesAdapter.games = games
-                    rvGamesAdapter.notifyDataSetChanged()
-                }
-                gameViewModel.getGamesByPlatform(platform)
-            }
         }
 
         rvGamesAdapter = GameAdapter(gameViewModel) { position, games ->
@@ -74,6 +66,5 @@ class GameListFragment : Fragment() {
     companion object {
         const val ARG_MODE = "ARG_MODE"
         const val ARG_CATEGORY = "ARG_CATEGORY"
-        const val ARG_PLATFORM = "ARG_PLATFORM"
     }
 }

@@ -35,15 +35,4 @@ class GameViewModel(
             }
         }
     }
-
-    fun getGamesByPlatform(platform: String) {
-        viewModelScope.launch {
-            try {
-                _games.value = gameRepository.getGamesByPlatformName(platform)
-            } catch (e: Exception) {
-                Log.e("Error", e.message.toString())
-            }
-        }
-    }
-
 }

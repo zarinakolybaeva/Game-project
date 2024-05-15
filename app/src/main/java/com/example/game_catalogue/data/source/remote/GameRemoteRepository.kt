@@ -33,17 +33,5 @@ class GameRemoteRepository() {
         }
     }
 
-    suspend fun getGamesByPlatformName(platform: String): List<Game> {
-        return try {
-            val apiService = ApiClient.getApiService()
-            apiService?.getGamesByPlatform(platform) ?: emptyList()
-        } catch (e: Exception) {
-            Log.e("Error", e.message.toString())
-            emptyList()
-        }
-    }
-
-
-
 
 }

@@ -11,11 +11,4 @@ interface ApiService {
     suspend fun getGamesByCategory(
         @Query("category") category: String
     ): List<Game>
-
-    @GET("games/")
-    suspend fun getGamesByPlatform(
-        @Query("platform") platform: String
-    ): List<Game>
-
-
 }

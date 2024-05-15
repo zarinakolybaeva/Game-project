@@ -12,9 +12,6 @@
             android:id="@+id/action_homeFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
         <action
-            android:id="@+id/action_homeFragment_to_platformListFragment"
-            app:destination="@id/platformListFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
     </fragment>
@@ -30,15 +27,6 @@
         tools:layout="@layout/fragment_category_list" >
         <action
             android:id="@+id/action_categoryListFragment_to_gameListFragment"
-            app:destination="@id/gameListFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/platformListFragment"
-        android:name="com.example.game_catalogue.view.fragment.PlatformListFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_platform_list" >
-        <action
-            android:id="@+id/action_platformListFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
     </fragment>
 </navigation>
