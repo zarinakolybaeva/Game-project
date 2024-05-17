@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+<<<<<<< HEAD
+=======
+    xmlns:tools="http://schemas.android.com/tools"
+>>>>>>> 2f32c1e841122ea409f4953307ce322188437875
     android:id="@+id/app_navigation"
     app:startDestination="@id/homeFragment">
     <fragment
@@ -33,11 +37,17 @@
     <fragment
         android:id="@+id/platformListFragment"
         android:name="com.example.game_catalogue.view.fragment.PlatformListFragment"
+<<<<<<< HEAD
         android:label="Platforms">
+=======
+        android:label="Categories"
+        tools:layout="@layout/fragment_platform_list" >
+>>>>>>> 2f32c1e841122ea409f4953307ce322188437875
         <action
             android:id="@+id/action_platformListFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
     </fragment>
+<<<<<<< HEAD
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.example.game_catalogue.view.fragment.WelcomeFragment"
@@ -46,4 +56,6 @@
             android:id="@+id/action_welcome_fragment_to_home_fragment"
             app:destination="@id/homeFragment" />
     </fragment>
+=======
+>>>>>>> 2f32c1e841122ea409f4953307ce322188437875
 </navigation>

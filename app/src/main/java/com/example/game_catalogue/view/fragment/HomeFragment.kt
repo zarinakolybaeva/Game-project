@@ -26,6 +26,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             btnCategories.setOnClickListener {
                 findNavController().navigate(R.id.action_homeFragment_to_categoryListFragment)
             }
+            btnPlatforms.setOnClickListener {
+                findNavController().navigate(R.id.action_homeFragment_to_platformListFragment)
+            }
             btnGames.setOnClickListener {
                 findNavController().navigate(
                     R.id.action_homeFragment_to_gameListFragment,
