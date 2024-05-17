@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_navigation"
     app:startDestination="@id/homeFragment">
     <fragment
@@ -11,6 +10,9 @@
         <action
             android:id="@+id/action_homeFragment_to_categoryListFragment"
             app:destination="@id/categoryListFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_platformListFragment"
+            app:destination="@id/platformListFragment" />
         <action
             android:id="@+id/action_homeFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
@@ -23,10 +25,25 @@
     <fragment
         android:id="@+id/categoryListFragment"
         android:name="com.example.game_catalogue.view.fragment.CategoryListFragment"
-        android:label="Categories"
-        tools:layout="@layout/fragment_category_list" >
+        android:label="Categories">
         <action
             android:id="@+id/action_categoryListFragment_to_gameListFragment"
             app:destination="@id/gameListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/platformListFragment"
+        android:name="com.example.game_catalogue.view.fragment.PlatformListFragment"
+        android:label="Platforms">
+        <action
+            android:id="@+id/action_platformListFragment_to_gameListFragment"
+            app:destination="@id/gameListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="com.example.game_catalogue.view.fragment.WelcomeFragment"
+        android:label="Tutorial">
+        <action
+            android:id="@+id/action_welcome_fragment_to_home_fragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

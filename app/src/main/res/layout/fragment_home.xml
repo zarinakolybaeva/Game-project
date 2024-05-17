@@ -4,16 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.HomeFragment">
+    tools:context=".view.HomeFragment"
+    android:background="@drawable/gradient_background">
 
     <TextView
         android:id="@+id/tvWelcome"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="sans-serif-smallcaps"
+        android:layout_marginBottom="500dp"
+        android:fontFamily="@font/bangers"
+        android:shadowColor="#B09BD6"
+        android:shadowRadius="30"
         android:text="Let's play!"
-        android:textColor="@color/teal_blue"
+        android:textColor="#C0C0C0"
         android:textSize="50sp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline3" />
@@ -23,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.3" />
+        app:layout_constraintGuide_percent="0.1" />
 
     <Button
         android:id="@+id/btnGames"
@@ -34,7 +40,7 @@
         android:fontFamily="serif-monospace"
         android:text="Go to Games"
         android:textColor="@color/white"
-        android:textSize="45sp"
+        android:textSize="40sp"
         app:cornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

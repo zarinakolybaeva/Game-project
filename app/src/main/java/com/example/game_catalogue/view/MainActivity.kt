@@ -11,6 +11,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.example.game_catalogue.R
 import com.example.game_catalogue.databinding.ActivityMainBinding
 import com.example.game_catalogue.view.fragment.GameListFragment
+import com.example.game_catalogue.view.util.Welcome
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -25,17 +26,26 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
+
+        val welcome = Welcome(this)
+
+        if (!welcome.isOpened()) {
+            navController.navigate(R.id.welcomeFragment)
+
+            welcome.setOpened()
+        }
+
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.gameListFragment, R.id.categoryListFragment)
+            setOf(R.id.homeFragment, R.id.gameListFragment, R.id.categoryListFragment, R.id.platformListFragment,R.id.welcomeFragment)
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
-        bottomNavigationView.setOnItemSelectedListener {
-            if (it.itemId == R.id.gameListFragment) {
-                navController.navigate(it.itemId, bundleOf(GameListFragment.ARG_MODE to 0))
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            if (item.itemId == R.id.gameListFragment) {
+                navController.navigate(item.itemId, bundleOf(GameListFragment.ARG_MODE to 0))
             } else {
-                navController.navigate(it.itemId)
+                navController.navigate(item.itemId)
             }
             true
         }
