@@ -1,6 +1,6 @@
 # Project Name: Game Catalogue
 
-Game Catalogue is an Android application that allows users to browse and discover various games, view games by categories, and explore detailed information about each game.
+Game Catalogue is an Android application that allows users to browse and discover various games, view them by categories or platfomrs.
 
 
 ## Overview
@@ -8,7 +8,7 @@ Game Catalogue is an Android application that allows users to browse and discove
 The Game Catalogue app provides the following features:
 - Browse a list of games
 - View games by category
-- Access detailed information about each game
+- View games by platform
 
 
 ## Setup Instructions
@@ -44,3 +44,10 @@ Used api: https://www.freetogame.com/api/
 - Description: Retrieve a list of games filtered by category.
 - Parameters:
   - category (string): The category to filter games by.
+
+#### 3. Get Games by Platform
+
+- Endpoint:  @GET("games/")
+- Description: Retrieve a list of games filtered by platform.
+- Parameters:
+  - platform (string): The platform to filter games by.
