@@ -5,4 +5,8 @@
     <string name="home">Home</string>
     <string name="games_list">Games List</string>
     <string name="categories">Categories</string>
+    <string name="platforms">Platforms</string>
+    <string name="instructions">This is an app where you can find new games to play!
+        You can choose which category of game you want to play like Shooter or MMO and the preferable platform
+        like PC or Browser.</string>
 </resources>

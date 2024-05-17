@@ -12,7 +12,6 @@ import com.example.game_catalogue.databinding.FragmentGameListBinding
 import com.example.game_catalogue.view.adapter.GameAdapter
 import com.example.game_catalogue.viewModel.GameViewModel
 import android.net.Uri
-
 class GameListFragment : Fragment() {
     private lateinit var binding: FragmentGameListBinding
     private lateinit var gameViewModel: GameViewModel
@@ -26,48 +25,44 @@ class GameListFragment : Fragment() {
         return binding.root
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        gameViewModel = GameViewModel(
-            GameRemoteRepository.getInstance()
-        )
 
-        when (requireArguments().getInt(ARG_MODE)) {
-            0 -> {
-                gameViewModel.games.observe(viewLifecycleOwner) { games ->
-                    rvGamesAdapter.games = games
-                    rvGamesAdapter.notifyDataSetChanged()
-                }
-                gameViewModel.getAllGames()
-            }
-            1 -> {
-                val category = requireArguments().getString(ARG_CATEGORY)!!
-                gameViewModel.games.observe(viewLifecycleOwner) { games ->
-                    rvGamesAdapter.games = games
-                    rvGamesAdapter.notifyDataSetChanged()
-                }
-                gameViewModel.getGamesByCategory(category)
-            }
-            2 -> {
-                val platform = requireArguments().getString(ARG_PLATFORM)!!
-                gameViewModel.games.observe(viewLifecycleOwner) { games ->
-                    rvGamesAdapter.games = games
-                    rvGamesAdapter.notifyDataSetChanged()
-                }
-                gameViewModel.getGamesByPlatform(platform)
-            }
-        }
+        gameViewModel = GameViewModel(GameRemoteRepository.getInstance())
 
         rvGamesAdapter = GameAdapter(gameViewModel) { position, games ->
             val openUrl = Intent(Intent.ACTION_VIEW)
             openUrl.data = Uri.parse(games[position].freetogame_profile_url)
             startActivity(openUrl)
         }
+
         binding.rvGames.apply {
             adapter = rvGamesAdapter
             layoutManager = LinearLayoutManager(context)
             setHasFixedSize(true)
+        }
+
+        when (requireArguments().getInt(ARG_MODE)) {
+            0 -> {
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
+                    rvGamesAdapter.submitList(games)
+                }
+                gameViewModel.getAllGames()
+            }
+            1 -> {
+                val category = requireArguments().getString(ARG_CATEGORY)!!
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
+                    rvGamesAdapter.submitList(games)
+                }
+                gameViewModel.getGamesByCategory(category)
+            }
+            2 -> {
+                val platform = requireArguments().getString(ARG_PLATFORM)!!
+                gameViewModel.games.observe(viewLifecycleOwner) { games ->
+                    rvGamesAdapter.submitList(games)
+                }
+                gameViewModel.getGamesByPlatform(platform)
+            }
         }
     }
 
