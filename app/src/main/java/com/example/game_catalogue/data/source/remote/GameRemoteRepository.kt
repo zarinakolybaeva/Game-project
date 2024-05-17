@@ -1,14 +1,8 @@
 package com.example.game_catalogue.data.source.remote
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.example.game_catalogue.data.model.Game
 import com.example.game_catalogue.data.source.remote.api.ApiClient
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-
 class GameRemoteRepository() {
     companion object {
         private var instance: GameRemoteRepository? = null
@@ -17,38 +11,34 @@ class GameRemoteRepository() {
             instance ?: GameRemoteRepository()
         }
     }
-
-    fun getAllGames(): LiveData<List<Game>> {
-        val result = MutableLiveData<List<Game>>()
-
-        val call = ApiClient.getApiService()?.getAllGames()
-        call?.enqueue(object : Callback<List<Game>> {
-            override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
-                result.value = if (response.isSuccessful) response.body() else emptyList()
-            }
-            override fun onFailure(call: Call<List<Game>>, t: Throwable) {
-                result.value = emptyList()
-                Log.i("Error", t.message.toString())
-            }
-        })
-
-        return result
+    suspend fun getAllGames(): List<Game> {
+        return try {
+            val apiService = ApiClient.getApiService()
+            apiService?.getAllGames() ?: emptyList()
+        } catch (e: Exception) {
+            Log.e("Error", e.message.toString())
+            emptyList()
+        }
     }
 
-    fun getGamesByCategoryName(category: String): LiveData<List<Game>> {
-        val result = MutableLiveData<List<Game>>()
-
-        val call = ApiClient.getApiService()?.getGamesByCategory(category)
-        call?.enqueue(object : Callback<List<Game>> {
-            override fun onResponse(call: Call<List<Game>>, response: Response<List<Game>>) {
-                result.value = if (response.isSuccessful) response.body() else emptyList()
-            }
-            override fun onFailure(call: Call<List<Game>>, t: Throwable) {
-                result.value = emptyList()
-                Log.i("Error", t.message.toString())
-            }
-        })
-
-        return result
+    suspend fun getGamesByCategoryName(category: String): List<Game> {
+        return try {
+            val apiService = ApiClient.getApiService()
+            apiService?.getGamesByCategory(category) ?: emptyList()
+        } catch (e: Exception) {
+            Log.e("Error", e.message.toString())
+            emptyList()
+        }
     }
+
+    suspend fun getGamesByPlatformName(platform: String): List<Game> {
+        return try {
+            val apiService = ApiClient.getApiService()
+            apiService?.getGamesByPlatform(platform) ?: emptyList()
+        } catch (e: Exception) {
+            Log.e("Error", e.message.toString())
+            emptyList()
+        }
+    }
+
 }
