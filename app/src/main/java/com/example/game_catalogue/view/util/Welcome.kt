@@ -1,3 +1,5 @@
+package com.example.game_catalogue.view.util
+
 import android.content.Context
 
 class Welcome(context: Context) {

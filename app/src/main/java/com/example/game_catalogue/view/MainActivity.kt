@@ -1,3 +1,19 @@
+package com.example.game_catalogue.view
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import androidx.core.os.bundleOf
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.game_catalogue.R
+import com.example.game_catalogue.databinding.ActivityMainBinding
+import com.example.game_catalogue.view.fragment.GameListFragment
+import com.example.game_catalogue.view.util.Welcome
+import com.google.android.material.bottomnavigation.BottomNavigationView
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
@@ -14,16 +30,20 @@ class MainActivity : AppCompatActivity() {
         val welcome = Welcome(this)
 
         if (!welcome.isOpened()) {
-            // If it's the first time opening the app, navigate to the Welcome fragment
             navController.navigate(R.id.welcomeFragment)
 
-            // Mark the app as opened
             welcome.setOpened()
         }
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
         val appBarConfiguration = AppBarConfiguration(
-            setOf(R.id.homeFragment, R.id.gameListFragment, R.id.categoryListFragment, R.id.platformListFragment,R.id.welcomeFragment)
+            setOf(
+                R.id.homeFragment,
+                R.id.gameListFragment,
+                R.id.categoryListFragment,
+                R.id.platformListFragment,
+                R.id.welcomeFragment
+            )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         bottomNavigationView.setupWithNavController(navController)
@@ -36,3 +56,4 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
+}
